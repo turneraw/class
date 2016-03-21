@@ -2,15 +2,19 @@
 // employees who all make the same hourly wage.
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 using namespace std;
  
 int main()
 {
-   const int NUM_EMPLOYEES = 5;   // Number of employees
-   int hours[NUM_EMPLOYEES];      // Array to hold hours
-   double payrate;                // Hourly pay rate
-   double grossPay;               // To hold the gross pay
- 
+  ofstream outputFile;
+  int payrate, grossPay;
+   const int NUM_EMPLOYEES = 5;   
+   int hours[NUM_EMPLOYEES];                 
+  
+  // Open an output file.
+  outputFile.open("Hack7.txt");
+  
    // Input the hours worked.
    cout << "Enter the hours worked by ";
    cout << NUM_EMPLOYEES << " employees who all\n";
@@ -26,13 +30,17 @@ int main()
    cin >> payrate;
  
    // Display each employee's gross pay.
-   cout << "Here is the gross pay for each employee:\n";
-   cout << fixed << showpoint << setprecision(2);
+   outputFile << "Here is the gross pay for each employee:\n";
+   outputFile << fixed << showpoint << setprecision(2);
    for (int index = 0; index < NUM_EMPLOYEES; index++)
    {
       grossPay = hours[index] * payrate;
-      cout << "Employee #" << (index + 1);
-      cout << ": $" << grossPay << endl;
+      outputFile << "Employee #" << (index + 1);
+      outputFile << ": $" << grossPay << endl;
    }
-   return 0;
+  
+  // Close the file.
+  outputFile.close();
+  cout << "Done.\n";
+  return 0;
 }
