@@ -1,13 +1,17 @@
 #include <iostream>
 #include <string>
- 
+#include <fstream>
 using namespace std;
  
 int main ()
 {
+ofstream outputFile;
    // local variable declaration:
    char grade;
  
+// Open an output file.
+  outputFile.open("switch.txt");
+    
   cout << "What is the grade: ";
   cin >> grade;
   
@@ -15,26 +19,30 @@ int main ()
    {
    case 'A' :
    case 'a' :
-      cout << "Excellent!" << endl;
+      outputFile << "Excellent!" << endl;
       break;
    case 'B' :
    case 'b' :
    case 'C' :
    case 'c' :
-      cout << "Well done" << endl;
+      outputFile << "Well done" << endl;
       break;
    case 'D' :
    case 'd' :
-      cout << "You passed" << endl;
+      outputFile << "You passed" << endl;
       break;
    case 'F' :
    case 'f' :
-      cout << "Better try again" << endl;
+      outputFile << "Better try again" << endl;
       break;
    default :
-      cout << "Invalid grade" << endl;
+      outputFile << "Invalid grade" << endl;
    }
-   cout << "Your grade is " << grade << endl;
- 
+   outputFile << "Your grade is " << grade << endl;
+  cout << "The information has been saved to a file.\n";
+    
+  // Close the file.
+  outputFile.close();
+  cout << "Done.\n";
    return 0;
 }
