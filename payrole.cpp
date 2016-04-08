@@ -3,6 +3,11 @@
 using namespace std;
  
 int main() { 
+// Constants 
+const double State = .034;
+const double SocialS = .062;
+const double MediCare = .0145;
+  
 //setting up variables
 double hours, rate, pay, statetax, netpay, social, medicare; 
  
@@ -18,13 +23,13 @@ cin >> rate;
 pay = hours * rate; 
  
 // Calculate State tax. 
-statetax = (pay * .034);
+statetax = (pay * State);
 
 // Calculate Social Security
-social = (pay * .062);
+social = (pay * SocialS);
   
 // Calculate Medicare
-medicare = (pay * .0145);
+medicare = (pay * MediCare);
   
 // Calculate net pay.
 netpay = pay - (statetax + social + medicare);
