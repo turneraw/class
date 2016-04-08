@@ -1,9 +1,11 @@
 // This progam calculates the user's pay. 
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 using namespace std;
  
 int main() { 
+  ofstream outputFile;
 // Constants 
 const double State = .034;
 const double SocialS = .062;
@@ -15,6 +17,9 @@ double hours, rate, pay, statetax, netpay, social, medicare, fedtax;
 // Set desired output formatting for numbers.
 cout << setprecision(2) << fixed << showpoint;
  
+// Open an output file.
+outputFile.open("payrole.txt");
+  
 // Get the number of hours worked. 
 cout << "How many hours did you work? "; 
 cin >> hours; 
@@ -62,21 +67,27 @@ medicare = (pay * MediCare);
 netpay = pay - (statetax + social + medicare + fedtax);
   
 // Display gross pay
-cout << "Your gross pay is $" << pay << endl;
+outputFile << "Your gross pay is $" << pay << endl;
   
 // Display Federal Tax
-cout << "Federal Tax took out this much: $" << fedtax << endl;
+outputFile << "Federal Tax took out this much: $" << fedtax << endl;
   
 // Display State Tax
-cout << "State Tax took out this much: $" << statetax << endl;
+outputFile << "State Tax took out this much: $" << statetax << endl;
  
 // Display Social Security
-cout << "Social Security took out this much: $" << social << endl;
+outputFile << "Social Security took out this much: $" << social << endl;
   
 // Display Medicare
-cout << "Medicare took out this much: $" << medicare << endl;
+outputFile << "Medicare took out this much: $" << medicare << endl;
   
 // Display the netpay. 
-cout << "You're net pay is $" << netpay << endl; 
+outputFile << "You're net pay is $" << netpay << endl; 
+  
+cout << "The information has been saved to a file.\n";
+  
+// Close the file.
+outputFile.close();
+cout << "Done.\n";
 return 0; 
 }
