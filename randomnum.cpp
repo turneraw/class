@@ -28,17 +28,30 @@ int main()
 
 		tries++;
 
-		if (guess > num)
+		if (guess >= num + 1)
+		if (guess < num + 20)
 
 			cout << "Too high!\n\n";
 
-		else if (guess < num)
+		if (guess >= num + 20)
+		if (guess <= num + 99)
+
+			cout << "Way too high!\n\n";
+
+		if (guess <= num - 1)
+		if (guess > num - 20)
 
 			cout << "Too low!\n\n";
 
-		else
+		if (guess <= num - 20)
+		if (guess >= num - 99)
+			
+			cout << "Way too low!\n\n";
 
-			cout << "\nCorrect! You got it in " << tries << " guesses!\n";
+		if (guess == num)
+
+			cout << "Correct! You got it in " << tries << " guesses!\n\n";
+
 
 	} while (guess != num);
 
