@@ -11,7 +11,7 @@ int main() {
 
 	int num, guess, tries = 0;
 	
-	outputFile.open("update.txt");
+	outputFile.open("GuessNum.txt");
 
 	srand(time(0)); //seed random number generator
 
